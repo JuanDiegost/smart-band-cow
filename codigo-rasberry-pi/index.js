@@ -27,7 +27,7 @@ admin.initializeApp({
 
 app.post("/add", function(req, res) {
   const id = req.body.id;
-  const value = req.body.value - 50;
+  const value = req.body.value - Math.random() * (50 - 30) + 30;
   const ref = admin.database().ref("/datos/id");
   if (isT) console.log("id = " + id + ", value is " + value);
   else console.log("id = " + id + ", value is " + 0);
