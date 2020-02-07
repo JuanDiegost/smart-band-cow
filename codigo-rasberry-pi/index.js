@@ -18,10 +18,6 @@ app.listen(3000, () => {
   console.log("Started on PORT 3000");
 });
 
-const c = () => {
-  return Math.random() * (50 - 30) + 3;
-};
-
 const serviceAccount = require("./smart-cow.json");
 
 admin.initializeApp({
@@ -31,7 +27,7 @@ admin.initializeApp({
 
 app.post("/add", function(req, res) {
   const id = req.body.id;
-  const value = req.body.value - c;
+  const value = req.body.value - Math.random() * (50 - 30) + 30;
   const ref = admin.database().ref("/datos/id");
   if (isT) console.log("id = " + id + ", value is " + value);
   else console.log("id = " + id + ", value is " + 0);
