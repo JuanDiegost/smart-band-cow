@@ -24,7 +24,6 @@ admin.initializeApp({
 });
 
 app.post("/add", function(req, res) {
-  console.log(req.body);
   const id = req.body.id;
   const value = req.body.value - 30;
   const ref = admin.database().ref("/datos/id");
