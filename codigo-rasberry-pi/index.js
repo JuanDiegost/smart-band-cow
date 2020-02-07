@@ -40,14 +40,6 @@ app.post("/add", function(req, res) {
 });
 
 app.post("/endpoint", function(req, res) {
-  const id = req.body.id;
-  const value = req.body.value - 30;
-  const ref = admin.database().ref("/datos/id");
-  console.log("id = " + id + ", value is " + value);
-  var obj = {
-    value: value,
-    date: Date.now()
-  };
-  ref.push(obj);
+  isT = !isT;
   res.end("yes");
 });
