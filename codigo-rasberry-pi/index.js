@@ -1,32 +1,33 @@
-const admin = require('firebase-admin');
-const express = require('express');
-const bodyParser = require('body-parser');
-
+const admin = require("firebase-admin");
+const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
 
 app.use(bodyParser.json());
 
 app.listen(3000, () => {
-  console.log('Started on PORT 3000');
+  console.log("Started on PORT 3000");
 });
 
-const serviceAccount = require('./smart-cow.json');
+const serviceAccount = require("./smart-cow.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://smart-band-fdf82.firebaseio.com',
+  databaseURL: "https://smart-band-fdf82.firebaseio.com"
 });
 
-app.post('/add', function (req, res) {
+app.post("/add", function(req, res) {
   console.log(req.body);
   const id = req.body.id;
-  const value = req.body.value;
-  const ref = admin.database().ref('/datos/id');
+  const value = req.body.value - 50;
+  const ref = admin.database().ref("/datos/id");
   console.log("id = " + id + ", value is " + value);
   var obj = {
     value: value,
